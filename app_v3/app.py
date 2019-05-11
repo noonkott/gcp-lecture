@@ -17,14 +17,16 @@ import uuid, tempfile
 
 #### Edit Here
 project_id = '<Your_Project_ID>'
-dbuser = 'appuser'
-dbpass = 'pas4appuser'
-dbinstance = '<Your_Instance_Connection_Name>'
+#dbuser = 'appuser'
+#dbpass = 'pas4appuser'
+#$dbinstance = '<Your_Instance_Connection_Name>'
 ####
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = \
-    'mysql+pymysql://%s:%s@/message_db?unix_socket=/cloudsql/%s' % (dbuser, dbpass, dbinstance)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///message.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = \
+#    'mysql+pymysql://%s:%s@/message_db?unix_socket=/cloudsql/%s' % (dbuser, dbpass, dbinstance)
 db = SQLAlchemy(app)
 bucket_name = '%s-imagestore' % project_id
 bucket = storage.Client().get_bucket(bucket_name)
