@@ -101,6 +101,6 @@ def post():
         return render_template('post.html', name=name, timestamp=timestamp)
     else:
         return redirect(url_for('messages'))
-
+ 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=False)
